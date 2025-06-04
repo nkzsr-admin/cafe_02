@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Okinawa Café Terrace | Forest Lumière</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body{font-family:'Noto Serif JP',serif}
+    h1,h2,h3,nav, .logo-font{font-family:'Playfair Display',serif}
+    .sticky-shadow{box-shadow:0 1px 3px rgba(0,0,0,.1)}
+    /* フェード用 */
+    .fade-enter    {opacity:0;transform:scale(1.05)}
+    .fade-enter.to {opacity:1;transform:scale(1);transition:all .3s}
+    .fade-leave    {opacity:1;transform:scale(1)}
+    .fade-leave.to {opacity:0;transform:scale(1.05);transition:all .3s}
+  </style>
+</head>
+
+<body class="antialiased text-gray-800 leading-relaxed scroll-smooth">
+
+<!-- =================== Header =================== -->
+<header id="top" class="fixed inset-x-0 top-0 z-50 bg-white/90 backdrop-blur-md transition-shadow">
+  <div class="max-w-7xl mx-auto flex items-center justify-between px-4 md:px-6 h-14">
+    <a href="#" class="flex items-center gap-2">
+      <img src="cafe04.jpg" alt="ロゴ" class="w-8 h-8 object-cover rounded-full">
+      <span class="logo-font font-semibold tracking-wide text-sm md:text-base">Okinawa Café</span>
+    </a>
+
+    <nav class="hidden md:flex gap-8 text-sm tracking-wide">
+      <a href="#about"  class="hover:text-green-700">コンセプト</a>
+      <a href="#menu"   class="hover:text-green-700">メニュー</a>
+      <a href="#info"   class="hover:text-green-700">お知らせ</a>
+      <a href="#access" class="hover:text-green-700">アクセス</a>
+    </nav>
+
+    <!-- Mobile menu button -->
+    <button id="openMenu" class="md:hidden p-2" aria-label="メニューを開く">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+           viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div id="mobileNav" class="fixed inset-0 z-50 flex items-center justify-center bg-white/80 backdrop-blur-sm hidden">
+  <div id="navPanel"  class="w-full h-full flex flex-col items-center justify-center gap-8 text-lg tracking-wide fade-enter">
+
+    <!-- close -->
+    <button class="absolute top-5 right-5" aria-label="閉じる" onclick="toggleNav()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+           viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round"
+              stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+
+    <nav class="flex flex-col items-center w-11/12 max-w-xs">
+      <a class="mob-link" href="#top">HOME <span class="ml-1">＋</span></a><hr class="w-full border-gray-200">
+      <a class="mob-link" href="#about">コンセプト <span class="ml-1">＋</span></a><hr class="w-full border-gray-200">
+      <a class="mob-link" href="#menu">メニュー <span class="ml-1">＋</span></a><hr class="w-full border-gray-200">
+      <a class="mob-link" href="#info">お知らせ <span class="ml-1">＋</span></a><hr class="w-full border-gray-200">
+      <a class="mob-link" href="#access">アクセス <span class="ml-1">＋</span></a>
+    </nav>
+  </div>
+</div>
+
+<style>
+  .mob-link{
+    @apply w-full py-4 text-center uppercase tracking-widest font-light text-gray-700;
+  }
+  .mob-link:hover{ @apply text-green-800; }
+</style>
+
+<div class="h-14"></div>
+
+<!-- =================== Hero ===================== -->
+<section class="relative">
+  <img src="cafe04.jpg" alt="Hero" class="w-full h-[60vh] md:h-[75vh] object-cover">
+  <h1 class="absolute inset-0 flex items-center justify-center text-white text-3xl md:text-5xl font-semibold tracking-wide drop-shadow-lg">
+    Okinawa Café Terrace
+  </h1>
+</section>
+
+<!-- ============ About (2-column overlay) ============ -->
+<section id="about" class="py-16 px-4 md:px-6">
+  <div class="max-w-3xl mx-auto text-center space-y-6">
+    <h2 class="text-xl md:text-2xl font-semibold tracking-wide">木漏れ日と深煎り珈琲が出会う場所</h2>
+    <p>森の小径を抜けると現れる、ガラス張りのテラス。<br>
+      季節の移ろいとともに変わる光と影のグラデーションの中で、<br class="hidden sm:inline">
+      自家焙煎のスペシャルティコーヒーと焼きたてのペイストリーをお愉しみいただけます。</p>
+  </div>
+
+  <!-- item 1 -->
+  <div class="mt-14 grid md:grid-cols-2 gap-6">
+    <figure class="relative group overflow-hidden rounded-lg shadow">
+      <img src="cafe04.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" alt="">
+      <figcaption class="absolute inset-0 flex items-end md:items-center md:justify-end bg-gradient-to-t from-black/60 via-black/20 to-transparent p-6 md:p-10">
+        <p class="text-white max-w-md text-sm md:text-base">朝露が残るテラス席では、森のアロマとともに淹れたてのブレンドを。</p>
+      </figcaption>
+    </figure>
+    <figure class="relative group overflow-hidden rounded-lg shadow md:order-1">
+      <img src="cafe04.jpg" class="w-full h-full object-cover transition duration-500 group-hover:scale-105" alt="">
+      <figcaption class="absolute inset-0 flex items-end md:items-center md:justify-start bg-gradient-to-t from-black/60 via-black/20 to-transparent p-6 md:p-10">
+        <p class="text-white max-w-md text-sm md:text-base">店内には薪のぬくもり。昼下がりは窓際で焼き菓子と読書をどうぞ。</p>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ Gallery ============ -->
+<section class="py-16 px-4 md:px-6">
+  <div class="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4">
+    <img src="cafe04.jpg" class="rounded-md object-cover w-full h-40 md:h-48" alt="">
+    <img src="cafe04.jpg" class="rounded-md object-cover w-full h-40 md:h-48" alt="">
+    <img src="cafe04.jpg" class="rounded-md object-cover w-full h-40 md:h-48" alt="">
+    <img src="cafe04.jpg" class="rounded-md object-cover w-full h-40 md:h-48" alt="">
+  </div>
+</section>
+
+<!-- ============ Menu ============ -->
+<section id="menu" class="py-16 bg-gray-50 px-4 md:px-6">
+  <div class="max-w-5xl mx-auto space-y-10">
+    <h2 class="text-center text-xl md:text-2xl font-semibold tracking-wide">SEASONAL MENU</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 text-sm">
+
+      <ul class="space-y-2">
+        <li class="flex justify-between border-b pb-1"><span>森のブレンド（Hot/Ice）</span><span>¥580</span></li>
+        <li class="flex justify-between border-b pb-1"><span>ハチミツラテ</span><span>¥630</span></li>
+        <li class="flex justify-between border-b pb-1"><span>ほうじ茶カプチーノ</span><span>¥620</span></li>
+        <li class="flex justify-between border-b pb-1"><span>自家製ジンジャーエール</span><span>¥650</span></li>
+        <li class="flex justify-between border-b pb-1"><span>木苺のレアチーズタルト</span><span>¥780</span></li>
+        <li class="flex justify-between border-b pb-1"><span>森のはちみつシフォン</span><span>¥720</span></li>
+      </ul>
+      <ul class="space-y-2">
+        <li class="flex justify-between border-b pb-1"><span>季節のスーププレート</span><span>¥950</span></li>
+        <li class="flex justify-between border-b pb-1"><span>照り焼きチキンサンド</span><span>¥880</span></li>
+        <li class="flex justify-between border-b pb-1"><span>きのこクリームパスタ</span><span>¥1,050</span></li>
+        <li class="flex justify-between border-b pb-1"><span>カプレーゼサラダ</span><span>¥820</span></li>
+        <li class="flex justify-between border-b pb-1"><span>クラシックプリン</span><span>¥640</span></li>
+        <li class="flex justify-between border-b pb-1"><span>小枝のアイス盛り</span><span>¥700</span></li>
+      </ul>
+
+    </div>
+    <p class="text-xs text-right text-gray-500">※ 価格は税込み表示です（季節により変更の場合あり）。</p>
+  </div>
+</section>
+
+<!-- ============ Information ============ -->
+<section id="info" class="py-16 px-4 md:px-6">
+  <div class="max-w-5xl mx-auto space-y-10">
+    <h2 class="text-xl md:text-2xl font-semibold tracking-wide text-center">INFORMATION</h2>
+
+    <div class="md:flex md:gap-20">
+      <div class="flex-1 space-y-4 text-sm">
+        <p>営業時間：9:00 – 19:00（L.O. 18:30）<br>※冬季は 10:00 – 18:00</p>
+        <p>
+          <span class="font-semibold">所在地：</span><br>
+          〒000-0000 沖縄県那覇市宇栄原 1-23-4<br>
+          Okinawa Forest Gate 内<br>
+          TEL：03-9876-5432
+        </p>
+        <p>ペット同伴可能なテラス席／無料Wi-Fi／全席禁煙</p>
+      </div>
+
+      <figure class="flex-1 mt-8 md:mt-0">
+        <img src="cafe04.jpg" alt="Map" class="w-full rounded shadow">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Facility + Google Map ============ -->
+<section id="access" class="py-16 bg-gray-50 px-4 md:px-6">
+  <div class="max-w-4xl mx-auto space-y-10">
+    <h2 class="text-center text-xl md:text-2xl font-semibold tracking-wide">ACCESS</h2>
+
+    <div class="aspect-w-16 aspect-h-9">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.626315286409!2d139.6978579156079!3d35.675915337104524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cbad8d58d03%3A0x679e0ad18dde1e5b!2zOkinawa!5e0!3m2!1sja!2sjp!4v0000000000000"
+        class="border-0 w-full h-full" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Footer ============ -->
+<footer class="bg-gray-900 text-gray-200 text-sm">
+  <div class="max-w-6xl mx-auto px-4 md:px-6 py-12 space-y-10">
+    <div class="text-center">
+      <a href="#top" onclick="scrollTopSmooth(event)" class="inline-flex flex-col items-center gap-2">
+        <span class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none"
+               viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round"
+                  stroke-width="2" d="M5 15l7-7 7 7"/>
+          </svg>
+        </span>
+        <span class="text-xs tracking-wide mt-1">PAGE TOP</span>
+      </a>
+    </div>
+
+    <nav class="flex flex-wrap justify-center gap-6 tracking-wide">
+      <a href="#about"  class="hover:text-white">コンセプト</a>
+      <a href="#menu"   class="hover:text-white">メニュー</a>
+      <a href="#info"   class="hover:text-white">お知らせ</a>
+      <a href="#access" class="hover:text-white">アクセス</a>
+    </nav>
+
+    <div class="flex justify-center">
+      <img src="src/images/cafe2_hero.jpg" alt="ロゴ" class="w-12 h-12 rounded-full object-cover">
+    </div>
+
+    <p class="text-center text-xs text-gray-400">© 2025 Okinawa Café Terrace. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<!-- =================== Scripts =================== -->
+<script>
+  /* ── sticky header shadow ─────────────────────── */
+  const header = document.querySelector('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('sticky-shadow', window.scrollY > 10);
+  });
+
+  /* ── smooth PAGE TOP ──────────────────────────── */
+  function scrollTopSmooth(e){
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ── mobile menu ─────────────────────────────── */
+  const mobileNav = document.getElementById('mobileNav');
+  const navPanel  = document.getElementById('navPanel');
+  const openBtn   = document.getElementById('openMenu');
+
+  /* open / close with fade */
+  window.toggleNav = function (){
+    const isHidden = mobileNav.classList.contains('hidden');
+    document.documentElement.classList.toggle('overflow-hidden', isHidden); // ★追加
+    document.body.classList.toggle('overflow-hidden', isHidden);            // ★追加
+
+    document.body.classList.toggle('overflow-hidden', isHidden); // lock scroll
+
+    navPanel.classList.remove('fade-enter','fade-leave','to');
+    navPanel.classList.add(isHidden ? 'fade-enter' : 'fade-leave');
+    // next tick for transition
+    requestAnimationFrame(()=>navPanel.classList.add('to'));
+
+    mobileNav.classList.toggle('hidden');
+  };
+
+  openBtn.addEventListener('click', toggleNav);
+  document.querySelectorAll('#mobileNav a').forEach(a=>{
+    a.addEventListener('click', toggleNav);
+  });
+</script>
+
+</body>
+</html>
